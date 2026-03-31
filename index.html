@@ -1,117 +1,290 @@
 <!DOCTYPE html>
-<html>
-
-<head> 
-    <title>Título que aparece na aba</title>
+<html lang="pt-pt">
+<head>
     <meta charset="UTF-8">
-    <style> /* Teu CSS aqui */ </style>
-</head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RB Works | Inovação & Engenharia</title>
 
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #00d2ff;
+            --dark: #0a1122; 
+            --light: #f8fafc;
+        }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            margin: 0; 
+            background-color: var(--dark); 
+            color: var(--light);
+            overflow-x: hidden;
+        }
+
+        /* FORÇAR A ORBITRON */
+        .brand-text, h1, h2, h3, .btn-secondary-top, .filter-btn, .c-label {
+            font-family: 'Orbitron', sans-serif !important;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .tech-header {
+            height: 100px;
+            display: flex;
+            align-items: center;
+            background-color: var(--dark);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .header-logo {
+            height: 60px;
+            width: auto;
+            margin-right: 15px;
+            display: block;
+        }
+
+        .brand-text {
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            line-height: 1;
+            margin: 0;
+        }
+
+        .btn-secondary-top {
+            margin-left: auto;
+            padding: 10px 20px;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+
+        .btn-secondary-top:hover {
+            background: var(--primary);
+            color: var(--dark);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h1 { font-size: 3.5rem; color: var(--primary); margin-bottom: 10px; }
+        .hero-sub { font-size: 1.2rem; opacity: 0.8; }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 40px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.03);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.3s;
+        }
+
+        .card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        .card h3 { color: var(--primary); margin-top: 0; }
+
+        .portfolio-section { padding: 80px 20px; text-align: center; }
+        .filter-buttons { margin-bottom: 40px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 10px 25px;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 5px;
+        }
+
+        .filter-btn:hover {
+            background: var(--primary);
+            color: var(--dark);
+            box-shadow: 0 0 15px var(--primary);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: #111;
+        }
+
+        .portfolio-item img { width: 100%; height: 250px; object-fit: cover; transition: 0.5s; }
+        .portfolio-item:hover img { transform: scale(1.1); filter: brightness(0.3); }
+
+        .item-info {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            color: white; width: 80%; opacity: 0; transition: 0.3s; pointer-events: none;
+        }
+        .portfolio-item:hover .item-info { opacity: 1; }
+
+        .contact-area {
+            padding: 100px 20px;
+            background: linear-gradient(to bottom, transparent, rgba(0, 210, 255, 0.05));
+            text-align: center;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .c-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            text-decoration: none;
+            color: white;
+            min-width: 160px;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .c-card:hover { transform: translateY(-8px); background: rgba(0, 210, 255, 0.05); }
+        .whatsapp-card:hover { border-color: #25D366; box-shadow: 0 0 20px rgba(37, 211, 102, 0.2); }
+        .instagram-card:hover { border-color: #E1306C; box-shadow: 0 0 20px rgba(225, 48, 108, 0.2); }
+        .email-simple-card:hover { border-color: var(--primary); }
+
+        .real-logo-icon { width: 42px; height: 42px; margin-bottom: 12px; }
+        .c-icon-simple { font-size: 2.2rem; margin-bottom: 12px; }
+
+        footer { text-align: center; padding: 40px; opacity: 0.5; font-size: 0.8rem; }
+    </style>
+</head>
 <body>
 
-    <header>
-        <h1>Logótipo do Meu Site</h1>
-        <nav>
-            <a href="#">Início</a> | <a href="#">Sobre</a>
-        </nav>
+    <header class="tech-header">
+        <div class="header-container">
+            <img src="https://iili.io/B3IbCLG.png" class="header-logo" alt="Logo">
+            <h1 class="brand-text">WORKS</h1>
+            <a href="#contacto" class="btn-secondary-top">Contactar</a>
+        </div>
     </header>
 
-    <main>
-        <p>Conteúdo principal do site...</p>
+    <main class="hero">
+        <h1>Vamos inovar?</h1>
+        <p class="hero-sub">Veja tudo o que podemos construir juntos</p>
     </main>
 
+    <section class="services">
+        <div class="card">
+            <h3>01. Web Development</h3>
+            <p>Criação de interfaces modernas, damos vida à sua "montra" no digital.</p>
+        </div>
+        <div class="card">
+            <h3>02. Modelação & 3D</h3>
+            <p>Engenharia reversa e criação de peças técnicas em Fusion 360.</p>
+        </div>
+        <div class="card">
+            <h3>03. Laser Cut</h3>
+            <p>Corte e gravação a laser para projetos profissionais ou decorativos.</p>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio-section">
+        <h2 class="orbitron-text">PORTFÓLIO</h2>
+        <div class="filter-buttons">
+            <button class="filter-btn" onclick="filterSelection('all')">TUDO</button>
+            <button class="filter-btn" onclick="filterSelection('web')">WEB</button>
+            <button class="filter-btn" onclick="filterSelection('3d')">3D</button>
+            <button class="filter-btn" onclick="filterSelection('laser')">LASER</button>
+        </div>
+
+        <div class="portfolio-grid">
+            <div class="portfolio-item web">
+                <img src="https://via.placeholder.com/400x300/0a1122/00d2ff?text=Web+Design" alt="Site">
+                <div class="item-info"><span>Landing Page Tech</span></div>
+            </div>
+            <div class="portfolio-item 3d">
+                <img src="https://via.placeholder.com/400x300/0a1122/00d2ff?text=3D+Model" alt="Peça 3D">
+                <div class="item-info"><span>Projeto Peça Técnica</span></div>
+            </div>
+            <div class="portfolio-item laser">
+                <img src="https://via.placeholder.com/400x300/0a1122/00d2ff?text=Laser+Work" alt="Corte Laser">
+                <div class="item-info"><span>Logo em Acrílico</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="contact-area">
+        <div class="contact-container">
+            <h2 class="orbitron-text">PRONTO PARA INOVAR?</h2>
+            <p class="location-text">📍 Leiria, Portugal — Disponível para projetos globais.</p>
+            
+            <div class="contact-links">
+                <a href="https://wa.me/351913652936" target="_blank" class="c-card whatsapp-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" class="real-logo-icon" alt="WhatsApp">
+                    <span class="c-label">WhatsApp</span>
+                </a>
+
+                <a href="https://www.instagram.com/rb_craft_works" target="_blank" class="c-card instagram-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" class="real-logo-icon" alt="Instagram">
+                    <span class="c-label">Instagram</span>
+                </a>
+
+                <a href="mailto:contacto@rbworks.pt" class="c-card email-simple-card">
+                    <span class="c-icon-simple">✉️</span>
+                    <span class="c-label">E-mail</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 [RB Works]</p>
+    </footer>
+
+    <script>
+        function filterSelection(c) {
+            var x, i;
+            x = document.getElementsByClassName("portfolio-item");
+            if (c == "all") c = "";
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+                if (x[i].className.indexOf(c) > -1) {
+                    x[i].style.display = "block";
+                }
+            }
+        }
+    </script>
 </body>
 </html>
-
-
-
-
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
-
-<header class="tech-header">
-    <div class="header-container">
-        <img src="https://iili.io/B3IbCLG.png" class="header-logo" alt="Logo">
-        <h1 class="brand-text">WORKS</h1>
-        <a href="#contacto" class="btn-secondary-top">Contactar</a>
-    </div>
-</header>
-
-<main class="hero">
-    <h1>Vamos inovar?</h1>
-    <p class="hero-sub">Veja tudo o que podemos construir juntos</p>
-</main>
-
-<section class="services">
-    <div class="card">
-        <h3>01. Web Development</h3>
-        <p>Criação de interfaces modernas, damos vida à sua "montra" no digital.</p>
-    </div>
-    <div class="card">
-        <h3>02. Modelação & Impressão 3D</h3>
-        <p>Engenharia reversa, criação de peças técnicas em Fusion 360. Print on demand</p>
-    </div>
-    <div class="card">
-        <h3>03. Corte e gravação a laser</h3>
-        <p>Projetos profissionais ou decorativos</p>
-    </div>
-</section>
-<section id="portfolio" class="portfolio-section">
-    <h2 class="orbitron-text">PORTFÓLIO</h2>
-    
-    <div class="filter-buttons">
-
-        <button class="filter-btn" onclick="filterSelection('3d')">WEB</button>
-        <button class="filter-btn" onclick="filterSelection('laser')">3D</button>
-        <button class="filter-btn" onclick="filterSelection('web')">LASER</button>
-    </div>
-
-    <div class="portfolio-grid">
-        <div class="portfolio-item 3d">
-            <img src="https://via.placeholder.com/300" alt="Peça 3D">
-            <div class="item-info"><span>Projeto Peça Técnica</span></div>
-        </div>
-        <div class="portfolio-item laser">
-            <img src="https://via.placeholder.com/300" alt="Corte Laser">
-            <div class="item-info"><span>Logo em Acrílico</span></div>
-        </div>
-        <div class="portfolio-item web">
-            <img src="https://via.placeholder.com/300" alt="Site">
-            <div class="item-info"><span>Landing Page Tech</span></div>
-        </div>
-    </div>
-</section>
-<section id="contacto" class="contact-area">
-    <div class="contact-container">
-        <h2 class="orbitron-text">PRONTO PARA INOVAR?</h2>
-        <p class="location-text">📍 Leiria, Portugal — Disponível para projetos globais.</p>
-        
-<div class="contact-links">
-    <a href="https://wa.me/351913652936" target="_blank" class="c-card whatsapp-card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" class="real-logo-icon" alt="WhatsApp">
-        <span class="c-label">WhatsApp</span>
-    </a>
-
-    <a href="https://www.instagram.com/rb_craft_works?igsh=MXo2a2h2c2tncXlj" target="_blank" class="c-card instagram-card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" class="real-logo-icon" alt="Instagram">
-        <span class="c-label">Instagram</span>
-    </a>
-
-    <a href="mailto:contacto@rbworks.pt" class="c-card email-simple-card">
-        <span class="c-icon-simple">✉️</span>
-        <span class="c-label">E-mail</span>
-    </a>
-</div>
-</section>
-<footer>
-    <p>© 2026 [RB Works]</p>
-</footer>
-
-function filterSelection(c) {
-  var x, i;
-  x = document.getElementsByClassName("portfolio-item");
-  if (c == "all") c = "";
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-    if (x[i].className.indexOf(c) > -1) x[i].style.display = "block";
-  }
-}

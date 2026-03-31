@@ -1,0 +1,228 @@
+:root {
+    --primary: #00d2ff;
+    --dark: #0a1122; 
+    --light: #f8fafc;
+}
+
+body { 
+    font-family: 'Inter', sans-serif; 
+    margin: 0; 
+    background-color: var(--dark); 
+    color: var(--light);
+}
+
+/* FORÇAR A ORBITRON */
+.brand-text, h1, h3, .btn-secondary-top {
+    font-family: 'Orbitron', sans-serif !important;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.tech-header {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    background-color: var(--dark);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.header-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+}
+
+.header-logo {
+    height: 70px;        /* Aumenta ou diminui este valor até alinhar com o WORKS */
+    width: auto;
+    margin-right: 3px;  /* Espaço entre o logo e o texto */
+    display: block;      /* Garante que ele respeita as margens */
+}
+
+/* Ajuste no texto para garantir que estão na mesma linha */
+.brand-text {
+    font-size: 2.5rem;   /* Se aumentares o logo, talvez precises de ajustar o texto */
+    display: flex;
+    align-items: center;
+    line-height: 1;      /* Ajuda no alinhamento vertical */
+}
+}
+
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 40px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.card {
+    background: rgba(255,255,255,0.03);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.card h3 {
+    color: var(--primary);
+    margin-top: 0;
+}
+
+.btn-secondary-top {
+    margin-left: auto;
+    padding: 10px 20px;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 0.8rem;
+}
+.portfolio-section { padding: 80px 20px; text-align: center; }
+
+.filter-buttons { margin-bottom: 40px; display: flex; justify-content: center; gap: 15px; }
+
+.filter-btn {
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    padding: 10px 25px;
+    font-family: 'Orbitron', sans-serif;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 5px;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background: var(--primary);
+    color: var(--dark);
+    box-shadow: 0 0 15px var(--primary);
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.portfolio-item {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.portfolio-item img { width: 100%; height: 250px; object-fit: cover; transition: 0.5s; }
+
+.portfolio-item:hover img { transform: scale(1.1); filter: brightness(0.5); }
+
+/* Texto que aparece no hover */
+.item-info {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    color: white; font-family: 'Orbitron', sans-serif; opacity: 0; transition: 0.3s;
+}
+.portfolio-item:hover .item-info { opacity: 1; }
+
+/* ========================================
+   ESTILO DA SECÇÃO DE CONTACTO
+   ======================================== */
+
+.contact-area {
+    padding: 100px 20px;
+    background: linear-gradient(to bottom, transparent, rgba(0, 210, 255, 0.05));
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.contact-container h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--primary);
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.location-text {
+    color: #94a3b8;
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap; /* Garante que em ecrãs pequenos os botões se ajustam */
+}
+
+.c-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 15px;
+    text-decoration: none;
+    color: white;
+    min-width: 180px;
+    transition: all 0.3s ease;
+    font-family: 'Orbitron', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.c-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0, 210, 255, 0.2);
+    background: rgba(0, 210, 255, 0.05);
+}
+
+.c-icon { 
+    font-size: 2rem; 
+    margin-bottom: 12px; 
+}
+
+.c-label {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+/* Estilo para os ícones coloridos (WhatsApp/Insta) */
+.real-logo-icon {
+    width: 42px;
+    height: 42px;
+    margin-bottom: 12px;
+    display: block;
+    object-fit: contain;
+}
+
+/* Estilo para o ícone simples do E-mail */
+.c-icon-simple {
+    font-size: 2.2rem; /* Tamanho para alinhar visualmente com as imagens */
+    margin-bottom: 12px;
+    display: block;
+}
+
+/* Hovers Coloridos para os sociais */
+.whatsapp-card:hover { 
+    border-color: #25D366; 
+    box-shadow: 0 0 20px rgba(37, 211, 102, 0.2); 
+}
+
+.instagram-card:hover { 
+    border-color: #E1306C; 
+    box-shadow: 0 0 20px rgba(225, 48, 108, 0.2); 
+}
+
+/* Hover Discreto para o E-mail (Azul do teu tema) */
+.email-simple-card:hover {
+    border-color: var(--primary);
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.2);
+}

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RB Works | Inovação & Engenharia</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@400;600&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -122,6 +122,12 @@
             margin: 0 auto;
         }
 
+        .portfolio-element {
+            display: none;
+            text-decoration: none;
+            color: inherit;
+        }
+
         .portfolio-item {
             background: var(--glass);
             border-radius: 20px;
@@ -131,7 +137,10 @@
             flex-direction: column;
             transition: 0.4s;
             text-align: left;
+            height: 100%;
         }
+
+        .portfolio-item:hover { border-color: var(--primary); }
 
         .portfolio-item img {
             width: 100%;
@@ -140,7 +149,7 @@
             background: #000;
         }
 
-        .item-details { padding: 20px; }
+        .item-details { padding: 20px; flex-grow: 1; }
         .item-details h4 { color: var(--primary); margin: 0 0 10px 0; font-size: 1rem; }
         .item-details p { font-size: 0.85rem; color: #cbd5e1; margin-bottom: 15px; }
 
@@ -151,25 +160,53 @@
             padding-top: 12px;
         }
 
-        /* CONTACTOS */
+        /* CONTACTOS - REATIVADOS */
         .contact-area { padding: 60px 20px; text-align: center; }
         .contact-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 30px; }
         
-        .c-card {
-            background: var(--glass);
-            border: 1px solid var(--border);
-            padding: 25px;
-            border-radius: 15px;
-            text-decoration: none;
-            color: white;
-            min-width: 150px;
-            transition: 0.3s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+/* No .c-card, força a altura da linha a 1 para o emoji não "empurrar" o texto */
+.c-card {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    padding: 25px;
+    border-radius: 15px;
+    text-decoration: none;
+    color: white;
+    width: 170px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: 0.3s;
+    /* Adiciona isto para matar o gap do emoji: */
+    line-height: 1; 
+}
 
-        .c-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+/* Força o emoji a comportar-se como as imagens */
+.c-card span:first-child {
+    font-size: 2rem; /* Tamanho do emoji */
+    display: block;
+    margin-bottom: 12px; /* Margem exata igual à das imagens */
+    line-height: 1;
+}
+
+/* Garante que a imagem do WhatsApp/Insta tem a mesma margem */
+.real-logo-icon {
+    width: 35px;
+    height: 35px;
+    margin-bottom: 12px !important;
+    display: block;
+}
+
+/* O texto (WhatsApp, Instagram, E-mail) */
+.c-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    margin: 0; /* Remove qualquer margem automática do texto */
+    display: block;
+}
         .real-logo-icon { width: 35px; height: 35px; margin-bottom: 10px; }
 
         footer { text-align: center; padding: 30px; opacity: 0.4; font-size: 0.7rem; }
@@ -197,93 +234,115 @@
     <section class="services">
         <div class="card">
             <h3>01. WEB DEVELOPMENT</h3>
-            <p>Interfaces modernas, rápidas e responsivas.</p>
+            <p>Interfaces modernas, rápidas e totalmente responsivas.</p>
         </div>
         <div class="card">
             <h3>02. MODELAÇÃO & 3D</h3>
-            <p>Prototipagem funcional, Print on demand, produção de pequenas séries.</p>
+            <p>Engenharia reversa e prototipagem funcional.</p>
         </div>
         <div class="card">
             <h3>03. CORTE & LASER</h3>
-            <p>Gravação e corte.</p>
+            <p>Gravação e corte de precisão industrial.</p>
         </div>
     </section>
 
     <section id="portfolio" class="portfolio-section">
-    <h2>PORTFÓLIO</h2>
-    
-    <div class="filter-buttons">
-        <button class="filter-btn" onclick="filterSelection('all')">TUDO</button>
-        <button class="filter-btn" onclick="filterSelection('web')">WEB</button>
-        <button class="filter-btn" onclick="filterSelection('3d')">3D</button>
-        <button class="filter-btn" onclick="filterSelection('laser')">LASER</button>
-    </div>
-
-    <div class="portfolio-grid">
+        <h2>PORTFÓLIO</h2>
         
-        <a href="https://rbworksrrproject.github.io/rbworks_project/" target="_blank" style="text-decoration: none; color: inherit;">
-    <div class="portfolio-item web">
-        <img src="https://i.ibb.co/k64mTZ2T/Captura-de-ecr-2026-04-27-151321.png" alt="RB Works Landing Page"> 
-        <div class="item-details">
-            <h4>PLATAFORMA DIGITAL RB WORKS</h4>
-            <p>Desenvolvimento de interface focado em design industrial, com navegação intuitiva e portfólio dinâmico.</p>
-            <div class="tech-info">
-                <strong>Aplicação:</strong> Web Design / Portfólio<br>
-                <strong>Stack:</strong> HTML5, CSS3 & JavaScript
-            </div>
-        </div>
-    </div>
-</a>
-
-        <div class="portfolio-item 3d">
-            <img src="https://i.ibb.co/DNgVjXs/PXL-20260424-124856856.jpg" alt="BMW E46 Persiana">
-            <div class="item-details">
-                <h4>PERSIANA CINZEIRO TRASEIRO</h4>
-                <p>Peça de substituição para modelos BMW E46. Peça funcional com acabamento texturizado.</p>
-                <div class="tech-info">
-                    <strong>Aplicação:</strong> Automóvel / Restauro<br>
-                    <strong>Material:</strong> PETG Black (Resistente ao Calor)
-                </div>
-            </div>
+        <div class="filter-buttons">
+            <button class="filter-btn" onclick="filterSelection('all')">TUDO</button>
+            <button class="filter-btn" onclick="filterSelection('web')">WEB</button>
+            <button class="filter-btn" onclick="filterSelection('3d')">3D</button>
+            <button class="filter-btn" onclick="filterSelection('laser')">LASER</button>
         </div>
 
-        <div class="portfolio-item 3d">
-            <img src="https://i.ibb.co/hRfssnrM/PXL-20260424-124927089.jpg" alt="Acessório calha DIM">
-            <div class="item-details">
-                <h4>ACESSÓRIO PARA CALHAS DIM</h4>
-                <p>Criação em altura de expânsão para calhas DIM. Fixação por parafuso e encaixe superior.</p>
-                <div class="tech-info">
-                    <strong>Aplicação:</strong> Elétrica/Construção<br>
-                    <strong>Material:</strong> PETG Black
+        <div class="portfolio-grid">
+            
+            <a href="https://rbworksrrproject.github.io/rbworks_project/" target="_blank" class="portfolio-element web">
+                <div class="portfolio-item">
+                    <img src="https://i.ibb.co/k64mTZ2T/Captura-de-ecr-2026-04-27-151321.png" alt="RB Works"> 
+                    <div class="item-details">
+                        <h4>PLATAFORMA DIGITAL RB WORKS</h4>
+                        <p>Interface oficial focado em design industrial e portfólio dinâmico.</p>
+                        <div class="tech-info">
+                            <strong>Aplicação:</strong> Web Design<br>
+                            <strong>Stack:</strong> HTML5, CSS3 & JS
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+            </a>
 
-        <div class="portfolio-item 3d">
-            <img src="https://i.ibb.co/C3NBCHNc/PXL-20260424-124957608.jpg" alt="Localizador de centros">
-            <div class="item-details">
-                <h4>LOCALIZADOR DE CENTROS</h4>
-                <p>Para furações precisas ao centro de tábuas, tamanho da broca personalizável.</p>
-                <div class="tech-info">
-                    <strong>Aplicação:</strong> Construção/Bricolage<br>
-                    <strong>Material:</strong> PETG Black
+            <div class="portfolio-element 3d">
+                <div class="portfolio-item">
+                    <img src="https://i.ibb.co/DNgVjXs/PXL-20260424-124856856.jpg" alt="BMW E46">
+                    <div class="item-details">
+                        <h4>PERSIANA CINZEIRO TRASEIRO</h4>
+                        <p>Peça funcional para BMW E46 com acabamento texturizado.</p>
+                        <div class="tech-info">
+                            <strong>Material:</strong> PETG Black
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-      
-        <div class="portfolio-item 3d">
-            <img src="https://i.ibb.co/chSV966v/PXL-20260424-125226762.jpg" alt="Localizador de centros">
-            <div class="item-details">
-                <h4>PROTEÇÂO PARA CALHA DE BANCO </h4>
-                <p>De aplicação em BMW série E90, colocação nas calhas dos bancos nas suas extremidades frontais e traseiras.</p>
-                <div class="tech-info">
-                    <strong>Aplicação:</strong> Automóvel / Restauro<br>
-                    <strong>Material:</strong> PETG Black
-                </div>
-            </div>
-        </div>
 
-    </div> </section>
+            <div class="portfolio-element 3d">
+                <div class="portfolio-item">
+                    <img src="https://i.ibb.co/hRfssnrM/PXL-20260424-124927089.jpg" alt="Calha DIM">
+                    <div class="item-details">
+                        <h4>ACESSÓRIO PARA CALHAS DIM</h4>
+                        <p>Expansão para calhas elétricas DIM.</p>
+                        <div class="tech-info">
+                            <strong>Material:</strong> PETG Black
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-element 3d">
+                <div class="portfolio-item">
+                    <img src="https://i.ibb.co/C3NBCHNc/PXL-20260424-124957608.jpg" alt="Localizador">
+                    <div class="item-details">
+                        <h4>LOCALIZADOR DE CENTROS</h4>
+                        <p>Furações precisas ao centro de tábuas.</p>
+                        <div class="tech-info">
+                            <strong>Material:</strong> PETG Black
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-element 3d">
+                <div class="portfolio-item">
+                    <img src="https://i.ibb.co/chSV966v/PXL-20260424-125226762.jpg" alt="BMW Proteção">
+                    <div class="item-details">
+                        <h4>PROTEÇÃO PARA CALHA DE BANCO</h4>
+                        <p>Aplicação em BMW série E90.</p>
+                        <div class="tech-info">
+                            <strong>Material:</strong> PETG Black
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </section>
+
+    <section id="contacto" class="contact-area">
+        <h2>PRONTO PARA INOVAR?</h2>
+        <div class="contact-links">
+            <a href="https://wa.me/351913652936" target="_blank" class="c-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" class="real-logo-icon">
+                <span class="c-label">WhatsApp</span>
+            </a>
+            <a href="https://www.instagram.com/rb_craft_works" target="_blank" class="c-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" class="real-logo-icon">
+                <span class="c-label">Instagram</span>
+            </a>
+            <a href="mailto:contacto@rbworks.pt" class="c-card">
+                <span style="font-size: 2rem; margin-bottom: 10px;">✉️</span>
+                <span class="c-label">E-mail</span>
+            </a>
+        </div>
+    </section>
 
     <footer>
         <p>© 2026 RB WORKS | LEIRIA, PORTUGAL</p>
@@ -291,12 +350,12 @@
 
     <script>
         function filterSelection(c) {
-            var x = document.getElementsByClassName("portfolio-item");
+            var x = document.getElementsByClassName("portfolio-element");
             if (c == "all") c = "";
             for (var i = 0; i < x.length; i++) {
                 x[i].style.display = "none";
                 if (x[i].className.indexOf(c) > -1) {
-                    x[i].style.display = "flex";
+                    x[i].style.display = "block";
                 }
             }
         }

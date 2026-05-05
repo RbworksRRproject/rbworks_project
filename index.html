@@ -100,7 +100,7 @@
 
         /* PORTFÓLIO */
         .portfolio-section { padding: 30px 20px; text-align: center; }
-        .filter-buttons { margin-bottom: 30px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+        .filter-buttons { margin-bottom: 40px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
         
         .filter-btn {
             background: transparent;
@@ -116,14 +116,16 @@
 
         .portfolio-grid {
             display: grid !important;
-            grid-template-columns: 1fr 1fr !important;
-            gap: 25px;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 30px;
             max-width: 1100px;
             margin: 0 auto;
+            align-items: stretch;
         }
 
         .portfolio-element {
-            display: none;
+            display: none; 
+            width: 100%;
             text-decoration: none;
             color: inherit;
         }
@@ -140,79 +142,58 @@
             height: 100%;
         }
 
-        .portfolio-item:hover { border-color: var(--primary); }
+        .portfolio-item:hover { border-color: var(--primary); transform: scale(1.02); }
 
+        /* AJUSTE DAS IMAGENS */
         .portfolio-item img {
             width: 100%;
-            height: 300px;
-            object-fit: contain;
-            background: #000;
+            height: 280px; /* Altura fixa para alinhar */
+            object-fit: contain; /* Não estica, mantém a proporção original */
+            background: #000; /* Fundo preto para imagens que não preenchem a largura */
+            padding: 10px; /* Pequena margem interna para a imagem não tocar nos bordos */
         }
 
-        .item-details { padding: 20px; flex-grow: 1; }
+        .item-details { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
         .item-details h4 { color: var(--primary); margin: 0 0 10px 0; font-size: 1rem; }
-        .item-details p { font-size: 0.85rem; color: #cbd5e1; margin-bottom: 15px; }
+        .item-details p { font-size: 0.85rem; color: #cbd5e1; margin-bottom: 20px; flex-grow: 1; }
 
         .tech-info {
             font-size: 0.75rem;
             color: #94a3b8;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            padding-top: 12px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 15px;
+            margin-top: auto;
         }
 
-        /* CONTACTOS - REATIVADOS */
-        .contact-area { padding: 60px 20px; text-align: center; }
-        .contact-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 30px; }
+        /* CONTACTOS */
+        .contact-area { padding: 80px 20px; text-align: center; }
+        .contact-links { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; margin-top: 30px; }
         
-/* No .c-card, força a altura da linha a 1 para o emoji não "empurrar" o texto */
-.c-card {
-    background: var(--glass);
-    border: 1px solid var(--border);
-    padding: 25px;
-    border-radius: 15px;
-    text-decoration: none;
-    color: white;
-    width: 170px;
-    display: flex;
-    flex-direction: column; 
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    transition: 0.3s;
-    /* Adiciona isto para matar o gap do emoji: */
-    line-height: 1; 
-}
+        .c-card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            padding: 25px;
+            border-radius: 15px;
+            text-decoration: none;
+            color: white;
+            width: 180px;
+            display: flex;
+            flex-direction: column; 
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+        }
 
-/* Força o emoji a comportar-se como as imagens */
-.c-card span:first-child {
-    font-size: 2rem; /* Tamanho do emoji */
-    display: block;
-    margin-bottom: 12px; /* Margem exata igual à das imagens */
-    line-height: 1;
-}
+        .c-card:hover { border-color: var(--primary); background: rgba(0, 210, 255, 0.05); }
+        .real-logo-icon { width: 40px; height: 40px; margin-bottom: 12px; }
 
-/* Garante que a imagem do WhatsApp/Insta tem a mesma margem */
-.real-logo-icon {
-    width: 35px;
-    height: 35px;
-    margin-bottom: 12px !important;
-    display: block;
-}
+        footer { text-align: center; padding: 40px; opacity: 0.4; font-size: 0.75rem; border-top: 1px solid var(--border); }
 
-/* O texto (WhatsApp, Instagram, E-mail) */
-.c-label {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 0.75rem;
-    letter-spacing: 1px;
-    margin: 0; /* Remove qualquer margem automática do texto */
-    display: block;
-}
-        .real-logo-icon { width: 35px; height: 35px; margin-bottom: 10px; }
-
-        footer { text-align: center; padding: 30px; opacity: 0.4; font-size: 0.7rem; }
-
+        /* RESPONSIVIDADE */
         @media (max-width: 850px) {
             .portfolio-grid { grid-template-columns: 1fr !important; }
+            .hero h1 { font-size: 2.2rem; }
+            .portfolio-item img { height: 220px; }
         }
     </style>
 </head>
@@ -228,7 +209,7 @@
 
     <main class="hero">
         <h1>VAMOS INOVAR?</h1>
-        <p>Veja tudo o que podemos construir juntos</p>
+        <p>Soluções em Engenharia, 3D e Desenvolvimento Web</p>
     </main>
 
     <section class="services">
@@ -258,76 +239,115 @@
 
         <div class="portfolio-grid">
             
+            <!-- PROJETO WEB -->
             <a href="https://rbworksrrproject.github.io/rbworks_project/" target="_blank" class="portfolio-element web">
                 <div class="portfolio-item">
-                    <img src="https://i.ibb.co/k64mTZ2T/Captura-de-ecr-2026-04-27-151321.png" alt="RB Works"> 
+                    <img src="https://i.ibb.co/k64mTZ2T/Captura-de-ecr-2026-04-27-151321.png"> 
                     <div class="item-details">
-                        <h4>PLATAFORMA DIGITAL RB WORKS</h4>
-                        <p>Interface oficial focado em design industrial e portfólio dinâmico.</p>
+                        <h4>PLATAFORMA RB WORKS</h4>
+                        <p>Interface oficial focada em branding tecnológico e portfólio.</p>
                         <div class="tech-info">
-                            <strong>Aplicação:</strong> Web Design<br>
-                            <strong>Stack:</strong> HTML5, CSS3 & JS
+                            <strong>Stack:</strong> HTML5, CSS3 & Javascript
                         </div>
                     </div>
                 </div>
             </a>
 
+            <!-- PROJETOS 3D -->
             <div class="portfolio-element 3d">
                 <div class="portfolio-item">
-                    <img src="https://i.ibb.co/DNgVjXs/PXL-20260424-124856856.jpg" alt="BMW E46">
+                    <img src="https://i.ibb.co/DNgVjXs/PXL-20260424-124856856.jpg">
                     <div class="item-details">
-                        <h4>PERSIANA CINZEIRO TRASEIRO</h4>
-                        <p>Peça funcional para BMW E46 com acabamento texturizado.</p>
-                        <div class="tech-info">
-                            <strong>Material:</strong> PETG Black
-                        </div>
+                        <h4>PERSIANA CINZEIRO BMW</h4>
+                        <p>Reprodução de peça clássica para BMW E46 com alta resistência térmica.</p>
+                        <div class="tech-info"><strong>Material:</strong> PETG Industrial</div>
                     </div>
                 </div>
             </div>
 
             <div class="portfolio-element 3d">
                 <div class="portfolio-item">
-                    <img src="https://i.ibb.co/hRfssnrM/PXL-20260424-124927089.jpg" alt="Calha DIM">
+                    <img src="https://i.ibb.co/hRfssnrM/PXL-20260424-124927089.jpg">
                     <div class="item-details">
-                        <h4>ACESSÓRIO PARA CALHAS DIM</h4>
-                        <p>Expansão para calhas elétricas DIM.</p>
-                        <div class="tech-info">
-                            <strong>Material:</strong> PETG Black
-                        </div>
+                        <h4>SUPORTE CALHA DIM</h4>
+                        <p>Solução personalizada para organização de quadros elétricos.</p>
+                        <div class="tech-info"><strong>Material:</strong> PETG Black</div>
                     </div>
                 </div>
             </div>
 
             <div class="portfolio-element 3d">
                 <div class="portfolio-item">
-                    <img src="https://i.ibb.co/C3NBCHNc/PXL-20260424-124957608.jpg" alt="Localizador">
+                    <img src="https://i.ibb.co/C3NBCHNc/PXL-20260424-124957608.jpg">
                     <div class="item-details">
                         <h4>LOCALIZADOR DE CENTROS</h4>
-                        <p>Furações precisas ao centro de tábuas.</p>
-                        <div class="tech-info">
-                            <strong>Material:</strong> PETG Black
-                        </div>
+                        <p>Ferramenta de auxílio à furação precisa para marcenaria.</p>
+                        <div class="tech-info"><strong>Material:</strong> PETG High-Strength</div>
                     </div>
                 </div>
             </div>
 
             <div class="portfolio-element 3d">
                 <div class="portfolio-item">
-                    <img src="https://i.ibb.co/chSV966v/PXL-20260424-125226762.jpg" alt="BMW Proteção">
+                    <img src="https://i.ibb.co/chSV966v/PXL-20260424-125226762.jpg">
                     <div class="item-details">
-                        <h4>PROTEÇÃO PARA CALHA DE BANCO</h4>
-                        <p>Aplicação em BMW série E90.</p>
-                        <div class="tech-info">
-                            <strong>Material:</strong> PETG Black
-                        </div>
+                        <h4>COBERTURA CALHA BANCO</h4>
+                        <p>Proteção estética para calhas de assento BMW E90.</p>
+                        <div class="tech-info"><strong>Material:</strong> PETG UV Resistant</div>
                     </div>
                 </div>
             </div>
-        </div> 
+
+            <!-- PROJETO LASER -->
+            <div class="portfolio-element laser">
+                <div class="portfolio-item">
+                    <img src="https://i.ibb.co/r229Sty5/1111.png">
+                    <div class="item-details">
+                        <h4>Gravação em Cortiça</h4>
+                        <p>Apoio para copos, personalizado</p>
+                        <div class="tech-info"><strong>Técnica:</strong> Laser/Cortiça</div>
+                    </div>
+                </div>
+            </div>
+          
+           <div class="portfolio-element laser">
+                <div class="portfolio-item">
+                    <img src="https://i.ibb.co/nNzhQVFb/22222.png">
+                    <div class="item-details">
+                        <h4>Puzzle de Animação</h4>
+                        <p>Puzzle com imagem personalizada. Numero de peças costumizável.</p>
+                        <div class="tech-info"><strong>Técnica:</strong> Laser/Madeira</div>
+                    </div>
+                </div>
+            </div>
+          
+           <div class="portfolio-element laser">
+                <div class="portfolio-item">
+                    <img src="https://i.ibb.co/5hn8MnDq/33333.png" alt="Cartao_visita_aluminio">
+                    <div class="item-details">
+                        <h4>Cartão de Visita</h4>
+                        <p>Metal tipo alumínio, várias cores disponíveis.</p>
+                        <div class="tech-info"><strong>Técnica:</strong> Laser/Metal</div>
+                    </div>
+                </div>
+            </div>
+          
+            <div class="portfolio-element laser">
+                <div class="portfolio-item">
+                    <img src="https://i.ibb.co/r2zGLNKK/44444.png" alt="Cantil_Gravado">
+                    <div class="item-details">
+                        <h4>Cantil multiusos</h4>
+                        <p>Personalizado com foto, imagem, icon</p>
+                        <div class="tech-info"><strong>Técnica:</strong> Laser/Metal</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </section>
 
     <section id="contacto" class="contact-area">
-        <h2>PRONTO PARA INOVAR?</h2>
+        <h2>CONTACTO</h2>
         <div class="contact-links">
             <a href="https://wa.me/351913652936" target="_blank" class="c-card">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" class="real-logo-icon">
@@ -338,14 +358,14 @@
                 <span class="c-label">Instagram</span>
             </a>
             <a href="mailto:contacto@rbworks.pt" class="c-card">
-                <span style="font-size: 2rem; margin-bottom: 10px;">✉️</span>
+                <span style="font-size: 2rem; margin-bottom: 12px;">✉️</span>
                 <span class="c-label">E-mail</span>
             </a>
         </div>
     </section>
 
     <footer>
-        <p>© 2026 RB WORKS | LEIRIA, PORTUGAL</p>
+        <p>© 2026 RB WORKS | DESIGNED FOR INNOVATION</p>
     </footer>
 
     <script>
@@ -359,7 +379,10 @@
                 }
             }
         }
-        filterSelection('all');
+        
+        window.onload = function() {
+            filterSelection('all');
+        };
     </script>
 
 </body>
